@@ -1,0 +1,19 @@
+{
+    "name": "BasketWithBalls",
+    "description": "Sample universe where basket have balls",
+    "require": {
+        "php": ">=5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "4.*",
+        "instaclick/php-code-sniffer": "dev-master"
+    },
+    "autoload": {
+        "psr-0": {
+        	"BasketWithBalls\\": "src/",
+        	"BasketWithBalls\\Tests": "tests/",
+        	"PlayBalls\\": "src/",
+        	"PlayBalls\\Tests": "tests/"
+    	}
+    }
+}

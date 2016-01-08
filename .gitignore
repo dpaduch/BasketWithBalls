@@ -1,0 +1,7 @@
+vendor
+tests-coverage
+composer.lock
+composer.phar
+.project
+.settings
+.buildpath
