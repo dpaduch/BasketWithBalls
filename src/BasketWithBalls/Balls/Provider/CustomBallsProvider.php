@@ -27,6 +27,7 @@ class CustomBallsProvider implements Universe\Provider\BallsProviderInterface
      */
     public function setNumbers(array $numbers)
     {
+        $numbers = array_unique($numbers);
         $this->numbers = \SplFixedArray::fromArray($numbers);
     }
 
