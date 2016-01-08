@@ -19,10 +19,11 @@ class BasketFactory implements Universe\Factory\BasketFactoryInterface
 
     /**
      * @param string $name Basket's name
+     * @param string $capacity How many balls can fill
      */
-    public function __construct($name)
+    public function __construct($name, $capacity)
     {
-        $this->basket = $this->createBasket($name);
+        $this->basket = $this->createBasket($name, $capacity);
     }
 
     /* (non-PHPdoc)
@@ -32,10 +33,9 @@ class BasketFactory implements Universe\Factory\BasketFactoryInterface
         Universe\Provider\BallsProviderInterface $provider,
         Universe\Factory\BallFactoryInterface $ballFactory
     ) {
-        $balls = $this->basket->getBalls();
         while (($number = $provider->getBall())) {
             $ball = $ballFactory->createBall($number);
-            $balls->addBall($ball);
+            $this->basket->addBall($ball);
         }
 
         return true;
@@ -52,8 +52,8 @@ class BasketFactory implements Universe\Factory\BasketFactoryInterface
     /* (non-PHPdoc)
      * @see \BasketWithBalls\Universe\Factory\BasketFactoryInterface::createBasket()
      */
-    public function createBasket($name)
+    public function createBasket($name, $capacity)
     {
-        return ($this->basket = new Basket\Entity\Basket($name));
+        return ($this->basket = new Basket\Entity\Basket($name, $capacity));
     }
 }

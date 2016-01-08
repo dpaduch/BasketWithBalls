@@ -17,17 +17,18 @@ $scenario->addCommand(function($registry)
     use ($scenario)
 {
     // 30 random baskets up to 10 bills
-    for ($i = 1; $i <= 10; $i++) {
+    for ($i = 1; $i <= 30; $i++) {
 
         $baskets = $registry->getBaskets();
 
         $provider = new Balls\Provider\RandomBallsProvider($scenario->getMaximumNumberOfBall());
         $provider->setSize(rand(1, 10));
 
-        $basketFactory = new Basket\Factory\BasketFactory('#' . $i);
+        $basketFactory = new Basket\Factory\BasketFactory('#' . $i, 10);
         $basketFactory->loadBalls($provider, new Balls\Factory\BallFactory());
 
         $basket = $basketFactory->getBasket();
+
         $baskets->addBasket($basket);
 
         echo 'Basket ' . (string)$basket . "\n";
@@ -44,7 +45,7 @@ $scenario->addCommand(function($registry)
         return readline();
     });
 
-    $basketFactory = new Basket\Factory\BasketFactory('User\'s Basket');
+    $basketFactory = new Basket\Factory\BasketFactory('User\'s Basket', 100);
     $basketFactory->loadBalls($provider, new Balls\Factory\BallFactory());
 
     $basket = $basketFactory->getBasket();

@@ -23,7 +23,7 @@ class BasketRepositoryTest extends \PHPUnit_Framework_TestCase
      */
     public function testAddBasket(BasketRepository $repository)
     {
-        $basket = new Basket(self::BASKET_NAME_TEST);
+        $basket = new Basket(self::BASKET_NAME_TEST, 10);
         $repository->addBasket($basket);
 
         $this->assertEquals(1, count($repository));

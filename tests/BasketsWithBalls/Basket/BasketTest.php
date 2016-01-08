@@ -10,7 +10,7 @@ class BasketTest extends \PHPUnit_Framework_TestCase
 
     public function testCreate()
     {
-        $basketFactory = new Basket\Factory\BasketFactory(self::BASKET_NAME_TEST);
+        $basketFactory = new Basket\Factory\BasketFactory(self::BASKET_NAME_TEST, 10);
         $basket = $basketFactory->getBasket();
 
         $this->assertInstanceOf(Basket\Entity\Basket::class, $basket);

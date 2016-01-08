@@ -22,7 +22,7 @@ class ExactlyOneBallTest extends \PHPUnit_Framework_TestCase
      */
     public function testCheckFalse(ExactlyOneBallCriteria $criteria)
     {
-        $basket = new Basket\Entity\Basket('test');
+        $basket = new Basket\Entity\Basket('test', 2);
         $basket->getBalls()->addBall(new Balls\Entity\Ball(1));
         $basket->getBalls()->addBall(new Balls\Entity\Ball(2));
 
@@ -34,7 +34,7 @@ class ExactlyOneBallTest extends \PHPUnit_Framework_TestCase
      */
     public function testCheckTrue(ExactlyOneBallCriteria $criteria)
     {
-        $basket = new Basket\Entity\Basket('test');
+        $basket = new Basket\Entity\Basket('test', 1);
         $basket->getBalls()->addBall(new Balls\Entity\Ball(1));
 
         $this->assertTrue($criteria->check($basket));

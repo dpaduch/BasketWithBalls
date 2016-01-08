@@ -22,7 +22,7 @@ class OnlyOwnedBallsTest extends \PHPUnit_Framework_TestCase
      */
     public function testCheckFalse(OnlyOwnedBallsCriteria $criteria)
     {
-        $basket = new Basket\Entity\Basket('test');
+        $basket = new Basket\Entity\Basket('test', 3);
         $basket->getBalls()->addBall(new Balls\Entity\Ball(1));
         $basket->getBalls()->addBall(new Balls\Entity\Ball(2));
         $basket->getBalls()->addBall(new Balls\Entity\Ball(3));
@@ -35,7 +35,7 @@ class OnlyOwnedBallsTest extends \PHPUnit_Framework_TestCase
      */
     public function testCheckTrue(OnlyOwnedBallsCriteria $criteria)
     {
-        $basket = new Basket\Entity\Basket('test');
+        $basket = new Basket\Entity\Basket('test', 2);
         $basket->getBalls()->addBall(new Balls\Entity\Ball(1));
         $basket->getBalls()->addBall(new Balls\Entity\Ball(2));
 

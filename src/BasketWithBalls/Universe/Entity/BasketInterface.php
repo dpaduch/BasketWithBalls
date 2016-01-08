@@ -11,8 +11,9 @@ interface BasketInterface
 {
     /**
      * @param string $name
+     * @param integer $size
      */
-    public function __construct($name);
+    public function __construct($name, $size);
 
     /**
      * Returns name of the basket.

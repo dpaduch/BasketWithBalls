@@ -13,8 +13,9 @@ interface BasketFactoryInterface
 {
     /**
      * @param string $name Basket name
+     * @param string $capacity How many balls can handle
      */
-    public function __construct($name);
+    public function __construct($name, $capacity);
 
     /**
      * Loads balls provides using Ball Factory.
@@ -40,8 +41,9 @@ interface BasketFactoryInterface
      * Creates basket entity.
      *
      * @param string $name Basket name
+     * @param string $capacity How many balls can handle
      *
      * @return Universe\Entity\BasketInterface
      */
-    public function createBasket($name);
+    public function createBasket($name, $capacity);
 }

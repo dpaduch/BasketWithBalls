@@ -4,6 +4,7 @@ namespace BasketWithBalls\Basket\Entity;
 
 use BasketWithBalls\Universe\Entity\BasketInterface;
 use BasketWithBalls\Basket\Repository\BasketBallsRepository;
+use BasketWithBalls\Universe\Entity\BallInterface;
 
 /**
  * Basket Entity class.
@@ -18,6 +19,15 @@ class Basket implements BasketInterface
      * @var string
      */
     private $name;
+
+    /**
+     * Capacity of basket.
+     *
+     * How many balls can handle
+     *
+     * @var integer
+     */
+    private $capacity;
 
     /**
      * Balls repository.
@@ -35,10 +45,13 @@ class Basket implements BasketInterface
 
     /**
      * @param string $name Name of basket
+     * @param integer $capacity Basket capacity
      */
-    public function __construct($name)
+    public function __construct($name, $capacity)
     {
-        $this->name = $name;
+        $this->setName($name);
+        $this->setCapacity($capacity);
+
         $this->basketBalls = new BasketBallsRepository();
     }
 
@@ -53,6 +66,36 @@ class Basket implements BasketInterface
     }
 
     /**
+     * Sets name.
+     *
+     * @param integer $capacity
+     */
+    public function setName($name)
+    {
+        $this->name = (string)$name;
+    }
+
+    /**
+     * Returns capacity.
+     *
+     * @return number
+     */
+    public function getCapacity()
+    {
+        return $this->capacity;
+    }
+
+    /**
+     * Sets capacity.
+     *
+     * @param integer $capacity
+     */
+    public function setCapacity($capacity)
+    {
+        $this->capacity = (int)$capacity;
+    }
+
+    /**
      * Returns basket's balls repository.
      *
      * @return BasketBalls
@@ -60,6 +103,25 @@ class Basket implements BasketInterface
     public function getBalls()
     {
         return $this->basketBalls;
+    }
+
+    /**
+     * Adds ball to basket repository
+     *
+     * @param BallInterface $ball
+     *
+     * @return boolean
+     */
+    public function addBall(BallInterface $ball)
+    {
+        $balls = $this->getBalls();
+
+        if ($balls->count() == $this->capacity) {
+            return false;
+        }
+
+        $balls->addBall($ball);
+        return true;
     }
 
     /* (non-PHPdoc)

@@ -14,7 +14,7 @@ class BasketQueryTest extends \PHPUnit_Framework_TestCase
     public function setUp()
     {
         $this->basketRepository = new Basket\Repository\BasketRepository();
-        $this->basketRepository->addBasket(new Basket\Entity\Basket('test'));
+        $this->basketRepository->addBasket(new Basket\Entity\Basket('test', 10));
 
         $this->ballsRepository = new Basket\Repository\BasketBallsRepository();
         $this->ballsRepository->addBall(new Balls\Entity\Ball(1));
